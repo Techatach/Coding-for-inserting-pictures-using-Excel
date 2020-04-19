@@ -1,0 +1,22 @@
+Dim sPicture As String, pic As Picture
+
+sPicture = Application.GetOpenFilename _
+("Pictures (*.gif; *.jpg; *.bmp; *.tif), *.gif; *.jpg; *.bmp; *.tif", _
+, "please select picture as you want")
+
+If sPicture = "False" Then Exit Sub
+
+Set pic = ActiveSheet.Pictures.Insert(sPicture)
+With pic
+.ShapeRange.LockAspectRatio = msoFalse
+.Height = ActiveCell.Height
+.Width = ActiveCell.Width
+.Top = ActiveCell.Top
+.Left = ActiveCell.Left
+.Placement = xlMoveAndSize
+End With
+
+Set pic = Nothing
+
+References
+https://www.youtube.com/watch?v=h9x2onrpYTo
